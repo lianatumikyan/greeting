@@ -1,8 +1,26 @@
 'use strict';
 (function () {
 
-    class Init {
-        constructor() {
+        function greeting (greeting) {
+            return function (name) {
+                return (greeting + ' ' +  name);
+            }
+        }
+
+         function submitType(e, variables) {
+             e.preventDefault();
+             variables.hello = greeting(variables.greetVal.val());
+             variables.type.fadeOut();
+             variables.name.fadeIn();
+         }
+
+         function submitName(e, variables) {
+             e.preventDefault();
+             let text = variables.hello(variables.nameVal.val());
+             variables.centered.text(text);
+        }
+
+        function init() {
             let variables = {
                 hello: null,
                 type: $('.greetingType'),
@@ -11,35 +29,16 @@
                 nameVal: $('#name'),
                 centered: $('.centered')
             };
+
             if (variables.type){
-                variables.type.on("submit", e => this.submitType(e, variables));
+                variables.type.on("submit", e => submitType(e, variables));
             }
             if (variables.name){
-                variables.name.on("submit", e => this.submitName(e, variables));
+                variables.name.on("submit", e => submitName(e, variables));
             }
 
         }
 
-        submitType(e, variables) {
-            e.preventDefault();
-            variables.hello = this.greeting(variables.greetVal.val());
-            variables.type.fadeOut();
-            variables.name.fadeIn();
-        }
+        init();
 
-        submitName(e, variables) {
-            e.preventDefault();
-            let text = variables.hello(variables.nameVal.val());
-            variables.centered.text(text);
-        }
-
-
-        greeting (greeting) {
-            return function (name) {
-                return (greeting + ' ' +  name);
-            }
-        }
-    }
-
-    new Init();
-})();
+    })();
