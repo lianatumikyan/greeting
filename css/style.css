@@ -26,7 +26,7 @@ body {
     position: relative;
 }
 
-label {
+.group>label {
     position: absolute;
     top: 36.6666666667px;
     color: rgba(255, 255, 255, 0.5);
@@ -35,7 +35,7 @@ label {
     transition: .25s ease;
 }
 
-input {
+.group>input {
     display: block;
     width: 100%;
     padding-top: 36.6666666667px;
@@ -46,23 +46,23 @@ input {
     font-size: 36.6666666667px;
     transition: .3s ease;
 }
-input:valid ~ label {
+.group>input:valid ~ label {
     top: 0;
     font: 700 22px Roboto;
     color: rgba(255, 255, 255, 0.5);
 }
-input:focus {
+.group>input:focus {
     outline: none;
 }
-input:focus ~ label {
+.group>input:focus ~ label {
     top: 0;
     font: 700 22px Roboto;
     color: #2196f3;
 }
-input:focus ~ .bar:before {
+.group>input:focus ~ .bar:before {
     transform: translateX(0);
 }
-input:-webkit-autofill {
+.group>input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #333 inset;
     -webkit-text-fill-color: white !important;
 }
